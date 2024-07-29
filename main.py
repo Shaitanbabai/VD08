@@ -26,7 +26,7 @@ def get_weather(city):
     url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric&lang=ru"
     # Адрес, по которому мы будем отправлять запрос. Не забываем указывать f строку.
     response = requests.get(url)  # для получения результата нам понадобится модуль requests
-    return response.json()  # прописываем формат возврата результата
+    data = response.json()  # прописываем формат возврата результата
 
     if response.status_code == 200:
         return data, None
@@ -37,18 +37,3 @@ def get_weather(city):
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
-
-# def get_weather(city):
-#     api_key = "332abe57c6bdac6e4098f87ef75d2024"
-#     url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric&lang=ru"
-#     response = requests.get(url)
-#     data = response.json()
-#
-#     if response.status_code == 200:
-#         return data, None
-#     else:
-#         error_message = data.get("message", "Ошибка при получении данных о погоде")
-#         return None, error_message
-
